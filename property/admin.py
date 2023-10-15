@@ -1,8 +1,5 @@
 from django.contrib import admin
-from django.db.models import Q
-from django.utils.translation import gettext as _
-
-from .models import Flat
+from .models import Flat, Complaint
 
 
 class RoomsNumberFilter(admin.SimpleListFilter):
@@ -76,4 +73,9 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ('new_building', PriceCategoryFilter, RoomsNumberFilter, HasBalconyFilter,)
 
 
+class ComplaintAdmin(admin.ModelAdmin):
+    raw_id_fields = ('flat',)
+
+
 admin.site.register(Flat, FlatAdmin)
+admin.site.register(Complaint, ComplaintAdmin)
