@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flat, Complaint
+from .models import Flat, Complaint, Owner
 
 
 class RoomsNumberFilter(admin.SimpleListFilter):
@@ -78,5 +78,12 @@ class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat',)
 
 
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ('flat',)
+    list_display = ('owner', 'owner_pure_phone')
+
+
+
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
+admin.site.register(Owner, OwnerAdmin)
