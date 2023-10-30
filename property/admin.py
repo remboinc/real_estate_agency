@@ -65,10 +65,16 @@ class PriceCategoryFilter(admin.SimpleListFilter):
             return queryset.filter(price__gte=3100000).order_by('price')
 
 
+class FlatInline(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ('flat',)
+
+
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'owner', 'address', ]
     readonly_fields = ['created_at', ]
-    list_display = ('address', 'owner_pure_phone', 'owners_phonenumber', 'price', 'new_building', 'construction_year', 'town')
+    list_display = (
+        'address', 'owner_pure_phone', 'owners_phonenumber', 'price', 'new_building', 'construction_year', 'town')
     list_editable = ('new_building',)
     list_filter = ('new_building', PriceCategoryFilter, RoomsNumberFilter, HasBalconyFilter,)
     raw_id_fields = ('liked_by',)
@@ -81,7 +87,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat',)
     list_display = ('owner', 'owner_pure_phone')
-
+    inlines = [FlatInline]
 
 
 admin.site.register(Flat, FlatAdmin)
