@@ -70,6 +70,11 @@ class FlatInline(admin.TabularInline):
     raw_id_fields = ('flat',)
 
 
+class OwnerInline(admin.TabularInline):
+    model = Owner.flat.through
+    raw_id_fields = ('owner',)
+
+
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'owner', 'address', ]
     readonly_fields = ['created_at', ]
@@ -78,6 +83,7 @@ class FlatAdmin(admin.ModelAdmin):
     list_editable = ('new_building',)
     list_filter = ('new_building', PriceCategoryFilter, RoomsNumberFilter, HasBalconyFilter,)
     raw_id_fields = ('liked_by',)
+    inlines = [OwnerInline]
 
 
 class ComplaintAdmin(admin.ModelAdmin):
