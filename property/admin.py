@@ -92,7 +92,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flat',)
-    list_display = ('owner', 'owner_pure_phone')
+    list_display = ('owner', 'pure_phonenumber')
     inlines = [FlatInline]
 
 
