@@ -71,6 +71,7 @@ class Complaint(models.Model):
         verbose_name='Автор жалобы',
         db_index=True,
         null=True,
+        related_name='complaints'
     )
     flat = models.ForeignKey(
         Flat,
@@ -78,6 +79,7 @@ class Complaint(models.Model):
         verbose_name='Квартира, на которую пожаловались',
         db_index=True,
         null=True,
+        related_name='complaints'
     )
     text = models.TextField(
         verbose_name='Текст жалобы',
