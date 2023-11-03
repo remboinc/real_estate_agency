@@ -94,7 +94,7 @@ class Owner(models.Model):
         max_length=200,
         db_index=True,
     )
-    owner_pure_phone = PhoneNumberField(
+    pure_phonenumber = PhoneNumberField(
         verbose_name='Нормализованный номер владельца',
         db_index=True,
         null=True,
