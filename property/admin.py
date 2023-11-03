@@ -71,7 +71,7 @@ class FlatInline(admin.TabularInline):
 
 
 class OwnerInline(admin.TabularInline):
-    model = Owner.flat.through
+    model = Owner.flats.through
     raw_id_fields = ('owner',)
 
 
@@ -91,7 +91,7 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 
 class OwnerAdmin(admin.ModelAdmin):
-    raw_id_fields = ('flat',)
+    raw_id_fields = ('flats',)
     list_display = ('owner', 'pure_phonenumber')
     inlines = [FlatInline]
 

@@ -105,7 +105,7 @@ class Owner(models.Model):
         max_length=20,
         db_index=True,
     )
-    flat = models.ManyToManyField(
+    flats = models.ManyToManyField(
         Flat,
         verbose_name='Квартиры в собственности',
         db_index=True,
