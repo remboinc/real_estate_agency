@@ -91,7 +91,7 @@ class Complaint(models.Model):
 
 
 class Owner(models.Model):
-    owner = models.CharField(
+    full_name = models.CharField(
         'ФИО владельца',
         max_length=200,
         db_index=True,
@@ -115,4 +115,4 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return self.owner
+        return self.full_name

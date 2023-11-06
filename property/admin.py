@@ -95,5 +95,5 @@ class ComplaintAdmin(admin.ModelAdmin):
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('flats',)
-    list_display = ('owner', 'pure_phonenumber')
+    list_display = ('full_name', 'pure_phonenumber')
     inlines = [FlatInline]
